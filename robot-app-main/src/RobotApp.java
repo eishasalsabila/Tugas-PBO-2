@@ -13,10 +13,9 @@ public class RobotApp {
     private Robot robot;
     private Scanner scanner;
     public RobotApp() {
-        // contoh konfigurasi (inisiasi object layout) area permainan: X = 10, Y = 10, icon area yang tidak ditempati robot adalah '*'
         this.layout = new Layout(10, 10, '*');
         this.scanner = new Scanner(System.in);
-        Position initialPosition = new Position(1, 1);
+        Position initialPosition = new Position(0, 0);
         this.robot = new Robot('o',initialPosition, layout); // Melewatkan layout ke Robot
         String instruction = "";
         System.out.println("-------- Permainan Dimulai --------");
@@ -63,22 +62,22 @@ public class RobotApp {
         return instruction;
     }
 
+
     private void draw() {
         System.out.println("------ Posisi Terbaru ------");
         char[][] area = layout.getArea();
-        Position robotPosition = robot.getPosition();
+        Position robotPosition = robot.getPosition(); 
         
         for (int i = 0; i < area.length; i++) {
-            for (int j = 0; j < area[i].length; j++) {
+            for (int j = 0; j < area[i].length; j++) {        
                 if (i == robotPosition.getY() && j == robotPosition.getX()) {
                     System.out.print(robot.getIcon());
                 } else {
                     System.out.print(area[i][j]);
                 }
             }
-        }
-        System.out.println();
-    } // Pindah ke baris berikutnya
+            System.out.println();
+        } // Pindah ke baris berikutnya
         /*
         Gambar layout:
         Contoh:
@@ -100,6 +99,6 @@ public class RobotApp {
             - konfigurasi (icon robot, posisi robot, luas area dan icon area permainan yang tidak ditempati robot) silahkan gunakan prinsip OOP
             - icon cukup menggunakan karakter yang ada di keyboard.
          */
-
+    }
 }
 
